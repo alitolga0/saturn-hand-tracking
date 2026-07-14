@@ -80,18 +80,16 @@ export function generateStarsParticleBuffers(starCount) {
     starPos[i * 3 + 2] = (Math.random() - 0.5) * 1200;
 
     const temp = Math.random();
-    if (temp < 0.6) {
-      starColors[i * 3] = 1;
-      starColors[i * 3 + 1] = 1;
-      starColors[i * 3 + 2] = 1;
-    } else if (temp < 0.8) {
-      starColors[i * 3] = 0.7;
-      starColors[i * 3 + 1] = 0.8;
-      starColors[i * 3 + 2] = 1;
+    if (temp < 0.85) {
+      // White stars
+      starColors[i * 3] = 1.0;
+      starColors[i * 3 + 1] = 1.0;
+      starColors[i * 3 + 2] = 1.0;
     } else {
-      starColors[i * 3] = 1;
-      starColors[i * 3 + 1] = 0.95;
-      starColors[i * 3 + 2] = 0.7;
+      // Pale blue stars
+      starColors[i * 3] = 0.78;
+      starColors[i * 3 + 1] = 0.88;
+      starColors[i * 3 + 2] = 1.0;
     }
   }
 

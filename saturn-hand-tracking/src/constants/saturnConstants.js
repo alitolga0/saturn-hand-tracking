@@ -5,11 +5,12 @@ export const JOINTS = [6, 10, 14, 18];
 
 export const RING_START_INDICES = [0, 6000, 14000, 18000];
 
+// Themed Sapphire Blue Ring Layers
 export const RING_LAYERS = [
-  { count: 6000, rMin: 5.8, rMax: 7.0, color: 0xdaa520, size: 0.02, opacity: 0.5, ySpread: 0.08 },
-  { count: 8000, rMin: 7.1, rMax: 8.5, color: 0xffd700, size: 0.03, opacity: 0.7, ySpread: 0.12 },
-  { count: 4000, rMin: 8.6, rMax: 9.2, color: 0xffec8b, size: 0.025, opacity: 0.4, ySpread: 0.06 },
-  { count: 3000, rMin: 9.4, rMax: 10.2, color: 0xcd853f, size: 0.02, opacity: 0.35, ySpread: 0.1 }
+  { count: 6000, rMin: 5.8, rMax: 7.0, color: 0x3d6bff, size: 0.02, opacity: 0.55, ySpread: 0.08 }, // Inner ring: #3D6BFF
+  { count: 8000, rMin: 7.1, rMax: 8.5, color: 0x5b8cff, size: 0.03, opacity: 0.75, ySpread: 0.12 }, // Middle ring: #5B8CFF
+  { count: 4000, rMin: 8.6, rMax: 9.2, color: 0x78a8ff, size: 0.025, opacity: 0.45, ySpread: 0.06 }, // Middle-outer ring
+  { count: 3000, rMin: 9.4, rMax: 10.2, color: 0x9cc8ff, size: 0.02, opacity: 0.4, ySpread: 0.1 } // Outer ring: #9CC8FF
 ];
 
 export const HAND_CONNECTIONS = [
@@ -21,21 +22,19 @@ export const HAND_CONNECTIONS = [
   [5, 6],
   [6, 7],
   [7, 8],
-  [0, 9],
+  [5, 9],
   [9, 10],
   [10, 11],
   [11, 12],
-  [0, 13],
+  [9, 13],
   [13, 14],
   [14, 15],
   [15, 16],
+  [13, 17],
   [0, 17],
   [17, 18],
   [18, 19],
-  [19, 20],
-  [5, 9],
-  [9, 13],
-  [13, 17]
+  [19, 20]
 ];
 
 export const STAR_COUNT = 6000;
@@ -83,12 +82,13 @@ export const ROTATION_CONFIG = {
   interactionMultiplier: 7
 };
 
+// Global colors definition matching premium sapphire render specs
 export const COLORS = {
-  bg: 0x020100,
-  ambientLight: 0xffd700,
-  pointLight: 0xffa500,
-  saturnBase: 0xffd700,
-  core: 0xffffff,
-  handSkeleton: 0xffd700,
-  handPoints: 0xffec8b
+  bg: 0x030611, // Premium deep-space black with a subtle blue tint
+  ambientLight: 0x1c2b4d, // Soft cool blue
+  pointLight: 0x7db5ff, // Point light: #7DB5FF
+  saturnBase: 0x4a7dff, // Main Saturn particles: #4A7DFF
+  core: 0xeaf6ff, // Core: #EAF6FF (almost white with a slight blue tint)
+  handSkeleton: 0x4a7dff, // Hand tracker matching Saturn base
+  handPoints: 0x78a8ff // Hand joints matching highlight particles
 };

@@ -1,6 +1,6 @@
 // Component: SaturnSimulation
 
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { useThreeScene } from '../hooks/useThreeScene';
 import { useMediaPipeHands } from '../hooks/useMediaPipeHands';
@@ -14,6 +14,7 @@ import { CAMERA_CONFIG, SHAKE_CONFIG, ROTATION_CONFIG, HAND_CONNECTIONS } from '
 export default function SaturnSimulation() {
   const canvasRef = useRef(null);
   const videoRef = useRef(null);
+  const [hasHand, setHasHand] = useState(false);
 
   // Core simulation states stored in a ref to bypass React rendering loop for WebGL performance (60 FPS)
   const simulationState = useRef({
@@ -33,7 +34,10 @@ export default function SaturnSimulation() {
       const service = threeSceneRef.current;
       if (!service) return;
 
-      if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
+      const detected = !!(results.multiHandLandmarks && results.multiHandLandmarks.length > 0);
+      setHasHand(detected);
+
+      if (detected) {
         const landmarks = results.multiHandLandmarks[0];
 
         // Update raw tracking coordinates in local camera space
@@ -161,7 +165,13 @@ export default function SaturnSimulation() {
     <>
       <LoadingOverlay isLoading={isLoading} error={error} />
       <HintOverlay />
-      <video id="input-video" ref={videoRef} playsInline></video>
+      <div id="camera-preview-container">
+        <video id="input-video" ref={videoRef} playsInline muted></video>
+        <div id="camera-status">
+          <span className={`status-dot ${hasHand ? 'detected' : 'searching'}`}></span>
+          {hasHand ? 'Hand Detected' : 'Searching..'}
+        </div>
+      </div>
       <canvas ref={canvasRef} style={{ display: 'block', position: 'absolute', top: 0, left: 0 }}></canvas>
     </>
   );
