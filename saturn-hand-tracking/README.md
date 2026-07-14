@@ -1,4 +1,4 @@
-# 🪐 Saturn Hand Tracking
+# 🪐 Saturn El Takibi
 
 MediaPipe Hands ve Three.js kullanılarak geliştirilmiş, **React + Vite** tabanlı interaktif bir parçacık simülasyonu.
 
