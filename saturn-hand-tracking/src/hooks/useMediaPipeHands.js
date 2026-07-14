@@ -33,9 +33,31 @@ export function useMediaPipeHands(videoRef, onResults) {
       }
     };
 
-    const handleError = () => {
+    const handleError = (err) => {
       setIsLoading(false);
-      setError('Hata: Kameraya erişim veya takip sistemi yüklenemedi.');
+      console.error('MediaPipe initialization error:', err);
+
+      if (!window.isSecureContext) {
+        setError('Hata: Kamera erişimi güvenli bağlantı (HTTPS) veya localhost gerektirir. Lütfen siteye HTTPS ile eriştiğinizden emin olun.');
+        return;
+      }
+
+      if (!window.Hands || !window.Camera) {
+        setError('Hata: MediaPipe kütüphaneleri yüklenemedi. Lütfen internet bağlantınızı kontrol edip sayfayı yenileyin.');
+        return;
+      }
+
+      if (err && (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError')) {
+        setError('Hata: Kamera erişim izni reddedildi. Lütfen tarayıcı ayarlarından kameraya izin verin ve sayfayı yenileyin.');
+        return;
+      }
+
+      if (err && (err.name === 'NotFoundError' || err.name === 'DevicesNotFoundError')) {
+        setError('Hata: Kamera cihazı bulunamadı. Lütfen cihazınıza bir kamera bağlı olduğundan emin olun.');
+        return;
+      }
+
+      setError(`Hata: Kameraya erişim veya takip sistemi yüklenemedi (${err?.message || 'Bilinmeyen hata'}).`);
     };
 
     service.initialize(videoRef.current, handleResults, handleError);

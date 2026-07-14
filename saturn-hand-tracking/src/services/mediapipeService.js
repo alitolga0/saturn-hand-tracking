@@ -1,8 +1,8 @@
 // MediaPipe Hands Tracking Service Layer with StrictMode Race-Condition Protection
 
-import '@mediapipe/hands';
-import '@mediapipe/camera_utils';
-
+// Note: MediaPipe libraries (window.Hands and window.Camera) are loaded globally
+// via <script> tags in index.html to prevent Vite's production bundler (Rollup)
+// from tree-shaking them away due to the "sideEffects": [] configuration in their package.json.
 const Hands = window.Hands;
 const Camera = window.Camera;
 
