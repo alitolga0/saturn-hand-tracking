@@ -1,16 +1,113 @@
-# React + Vite
+# 🪐 Saturn Hand Tracking
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+MediaPipe Hands ve Three.js kullanılarak geliştirilmiş, **React + Vite** tabanlı interaktif bir parçacık simülasyonu.
 
-Currently, two official plugins are available:
+Kullanıcı, web kamerası aracılığıyla algılanan el hareketleriyle Saturn'ü döndürebilir, parçacıkları patlatabilir ve kamerayı yakınlaştırıp uzaklaştırabilir.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## ✨ Özellikler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🪐 Three.js ile oluşturulmuş interaktif Saturn simülasyonu
+- ✋ Gerçek zamanlı MediaPipe Hand Tracking
+- 👊 Yumruk hareketiyle Saturn'ü döndürme
+- 🖐️ Açık el hareketiyle parçacıkları patlatma
+- 🤏 Pinch hareketiyle kamera yakınlaştırma / uzaklaştırma
+- 📷 Sağ üst köşede canlı kamera önizlemesi
+- 💎 Sapphire Blue renk teması
+- 🌌 Dinamik yıldız ve nebula arka planı
+- ⚡ Optimize edilmiş animasyon döngüsü
+- 🧹 Bellek sızıntılarını önleyen kaynak yönetimi
 
-## Expanding the Oxlint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+
+
+## 🛠️ Kullanılan Teknolojiler
+
+- React
+- Vite
+- Three.js
+- MediaPipe Hands
+- JavaScript (ES2023)
+
+---
+
+## 📁 Proje Yapısı
+
+```text
+src
+├── assets
+├── components
+├── constants
+├── hooks
+├── services
+├── utils
+├── App.jsx
+└── main.jsx
+```
+
+---
+
+## 🎮 El Hareketleri
+
+| Hareket | İşlev |
+|---------|--------|
+| 👊 Yumruk | Saturn'ü döndür |
+| 🖐️ Açık El | Parçacıkları patlat |
+| 🤏 Başparmak + İşaret Parmağı | Kamerayı yakınlaştır / uzaklaştır |
+
+---
+
+## 🚀 Kurulum
+
+Bağımlılıkları yükleyin:
+
+```bash
+npm install
+```
+
+Geliştirme sunucusunu başlatın:
+
+```bash
+npm run dev
+```
+
+Production derlemesi oluşturun:
+
+```bash
+npm run build
+```
+
+ESLint çalıştırın:
+
+```bash
+npm run lint
+```
+
+---
+
+## ⚙️ Performans
+
+Proje yüksek FPS ve düşük bellek kullanımı hedeflenerek geliştirilmiştir.
+
+- Tek `requestAnimationFrame` döngüsü
+- Yeniden kullanılan parçacık buffer'ları
+- Minimum Garbage Collection
+- Optimize edilmiş Three.js render süreci
+- Geometry, Material ve Event Listener temizliği
+- Kamera görüntüsünün hem önizleme hem de el takibi için ortak kullanımı
+
+---
+
+## 📷 Kamera Önizlemesi
+
+Ekranın sağ üst köşesinde yer alan canlı kamera önizlemesi sayesinde kullanıcı, MediaPipe'ın gördüğü görüntüyü takip edebilir ve el hareketlerini daha kolay hizalayabilir.
+
+---
+
+
+## 👨‍💻 Geliştirici
+
+**Ali Tolga Çakır**
+
